@@ -1,0 +1,47 @@
+package lab4.tests;
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+
+import lab4.pages.MainPage;
+
+public class MainPageTest {
+	WebDriver driver;
+	MainPage MainPage;
+	
+	@Before
+	public void setUp() {
+		
+		MainPage = new MainPage(driver);
+		driver = MainPage.chromeDriverConnection();
+		driver.manage().window().maximize();
+		MainPage.visit("https://phptravels.net");
+
+	}
+	@After
+	public void tearDown() {
+		driver.quit();
+	}
+	@Test
+		public void testChangeCurrency() throws InterruptedException {
+		Thread.sleep(1000);
+		MainPage.SetEuros();
+		Thread.sleep(2000);
+        assertTrue(MainPage.Euro());
+
+		
+	}
+	@Test
+	public void testChangeLanguage() throws InterruptedException {
+	Thread.sleep(1000);
+	MainPage.SetFrance();
+	Thread.sleep(2000);
+    assertTrue(MainPage.FranceVerifier());
+
+	
+}
+}
+	

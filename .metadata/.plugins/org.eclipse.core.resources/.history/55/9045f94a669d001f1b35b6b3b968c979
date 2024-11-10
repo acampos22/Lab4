@@ -1,0 +1,38 @@
+package lab4.page;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+
+
+public class loginpage extends base{
+    private WebDriver driver;
+    
+    private By emailField = By.xpath("/html/body/main/div[1]/form/div/div/div/div[1]/input");
+    private By passwordField = By.id("id_del_campo_password");
+    private By loginButton = By.id("id_del_boton_login");
+
+    public loginpage(WebDriver driver) {
+        this.driver = driver;
+    }
+    
+    public void setEmail(String email) {
+    	type(,emailField);
+    }
+    
+    public void setPassword(String password) {
+        driver.findElement(passwordField).sendKeys(password);
+    }
+    
+    public void clickLoginButton() {
+        driver.findElement(loginButton).click();
+    }
+    
+    // Método de login
+    public void login(String username, String password) {
+        setUsername(username);
+        setPassword(password);
+        clickLoginButton();
+    }
+}

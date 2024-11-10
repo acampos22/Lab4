@@ -1,0 +1,45 @@
+package lab4.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+
+
+public class loginpage extends lab4.base{
+	
+    public loginpage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+	private WebDriver driver;
+    
+    private By emailField = By.xpath("/html/body/main/div[1]/form/div/div/div/div[1]/input");
+    private By passwordField = By.id("id_del_campo_password");
+    private By loginButton = By.id("id_del_boton_login");
+
+    
+    public void setEmail(String email) {
+    	type(email,emailField);
+    }
+    
+    public void setPassword(String password) {
+    	type(password,passwordField);
+    }
+    
+    public void clickLoginButton() {
+    	click(loginButton);
+    }
+    
+    
+    public void login(String email, String password) {
+    	setEmail(email);
+        setPassword(password);
+        clickLoginButton();
+    }
+    
+    public boolean logged() {
+    	return getUrl() == "https://phptravels.net/dashboard";
+    }
+}
